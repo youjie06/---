@@ -7,14 +7,6 @@ root.title("備忘錄")
 root.geometry("1200x620+10+10")
 root.resizable(False,False)
 
-def change_font_family(event):
-    selected_family = fontfamily_Combobox.get()
-    textarea.config(font=(selected_family, textarea['font'][1]))
-
-def change_font_size(event):
-    selected_size = size_variable.get()
-    textarea.config(font=(textarea['font'][0], selected_size))
-
 tool_bar=Label(root)
 tool_bar.pack(side=TOP,fill=X)
 font_families=font.families()
