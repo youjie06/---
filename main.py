@@ -7,6 +7,14 @@ root.title("備忘錄")
 root.geometry("1200x620+10+10")
 root.resizable(False,False)
 
+def change_font_family(event):
+    selected_family = fontfamily_Combobox.get()
+    textarea.config(font=(selected_family, textarea['font'][1]))
+
+def change_font_size(event):
+    selected_size = size_variable.get()
+    textarea.config(font=(textarea['font'][0], selected_size))
+
 tool_bar=Label(root)
 tool_bar.pack(side=TOP,fill=X)
 font_families=font.families()
@@ -47,13 +55,22 @@ centerAlignImage=PhotoImage(file='center.png')
 centerAlignButton=Button(tool_bar,image=centerAlignImage)
 centerAlignButton.grid(row=0,column=8,padx=5)
 
-scrollbar=Scrollbar(root)
-scrollbar.pack(side=RIGHT,fill=Y)
-textarea=Text(root,yscrollcommand=scrollbar.set,font=('arial',12))
-textarea.pack(fill=BOTH,expand=True)
-scrollbar.config(command=textarea.yview)
+labelframe = LabelFrame(root, width=400, height=50, text='標題')
+labelframe.pack(padx=10, pady=10)
+input_font = ("Helvetica", 20)
 
-status_bar=Label(root,text='Status Bar')
+text_input = Text(labelframe, width=400, height=1, wrap='none', font=input_font)
+text_input.pack()
+
+labelframe = LabelFrame(root, width=400, height=150, text='內容')
+labelframe.pack(padx=10, pady=5)
+
+input_font = ("Helvetica", 15)
+
+text_input = Text(labelframe, width=110, height=20, wrap='word', font=input_font)
+text_input.pack()
+
+status_bar=Label(root,text='備忘錄')
 status_bar.pack(side=BOTTOM)
 
 root.mainloop()
