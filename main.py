@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
-from tkinter import font,colorchooser,IntVar
+from tkinter import font,colorchooser
 
 fontSize=12
 fontStyle='arial'
@@ -13,6 +13,7 @@ def font_size():
     global fontSize
     fontSize=size_variable.get()
     text_input.config(font=(fontStyle, fontSize))
+    
     
 def bold_text():
     text_property=font.Font(font=text_input['font']).actual()
@@ -84,36 +85,40 @@ font_size_Combobox=Combobox(tool_bar, width=14, textvariable=size_variable,state
 font_size_Combobox.current(4)
 font_size_Combobox.grid(row=0,column=1,padx=5)
 
-fontfamily_Combobox.bind('<<comboboxSelected>>',font_style)
-font_size_Combobox.bind('<<comboboxSelected>>',font_size)
+fontfamily_Combobox.bind('<<ComboboxSelected>>',font_style)
+fontfamily_Combobox.bind('<<ComboboxSelected>>',font_size)
+
+apply_font_sizeImage=PhotoImage(file='tick.png')
+apply_font_size_button = Button(tool_bar,image=apply_font_sizeImage, command=font_size)
+apply_font_size_button.grid(row=0, column=2, padx=5)
 
 boldImage=PhotoImage(file='bold.png')
 boldButton=Button(tool_bar,image=boldImage,command=bold_text)
-boldButton.grid(row=0,column=2,padx=5)
+boldButton.grid(row=0,column=3,padx=5)
 
 italicImage=PhotoImage(file='italic.png')
 italicButton=Button(tool_bar,image=italicImage,command=italic_text)
-italicButton.grid(row=0,column=3,padx=5)
+italicButton.grid(row=0,column=4,padx=5)
 
 underlineImage=PhotoImage(file='underline.png')
 underlineButton=Button(tool_bar,image=underlineImage,command=underline_text)
-underlineButton.grid(row=0,column=4,padx=5)
+underlineButton.grid(row=0,column=5,padx=5)
 
 fontColorImage=PhotoImage(file='font_Color.png')
 fontColorButton=Button(tool_bar,image=fontColorImage,command=color_select)
-fontColorButton.grid(row=0,column=5,padx=5)
+fontColorButton.grid(row=0,column=6,padx=5)
 
 leftAlignImage=PhotoImage(file='left.png')
 leftAlignButton=Button(tool_bar,image=leftAlignImage,command=align_left)
-leftAlignButton.grid(row=0,column=6,padx=5)
+leftAlignButton.grid(row=0,column=7,padx=5)
 
 rightAlignImage=PhotoImage(file='right.png')
 rightAlignButton=Button(tool_bar,image=rightAlignImage,command=align_right)
-rightAlignButton.grid(row=0,column=7,padx=5)
+rightAlignButton.grid(row=0,column=8,padx=5)
 
 centerAlignImage=PhotoImage(file='center.png')
 centerAlignButton=Button(tool_bar,image=centerAlignImage,command=align_center)
-centerAlignButton.grid(row=0,column=8,padx=5)
+centerAlignButton.grid(row=0,column=9,padx=5)
 
 labelframe = LabelFrame(root, width=400, height=150, text='內容')
 labelframe.pack(padx=10, pady=5)
